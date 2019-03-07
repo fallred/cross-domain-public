@@ -8,10 +8,10 @@
 </head>
 <body>
     <script>
-        function show(data){
-            console.log(data);
-        }
-        function jsonp (url, params, cb) {
+        // function show(data){
+        //     console.log(data);
+        // }
+        function jsonp ({url, params, cb}) {
             return new Promise((resolve, reject)=>{
                 let script = document.createElement('script');
                 window[cb] = function (data) {
@@ -30,15 +30,23 @@
         }
         // 只能发get请求 不支持post put delete
         // 不安全 xss攻击 不采用
+        // jsonp({
+        //     url: 'https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd=q&cb=show',
+        //     params: {wd: 'b'},
+        //     cb: 'show'
+        // }).then(data=>{
+        //     console.log(data);
+        // });
+
         jsonp({
-            url: 'https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd=q&cb=show',
-            params: {wd: 'b'},
+            url: 'http://localhost:3000/say',
+            params: {wd: '我爱你'},
             cb: 'show'
         }).then(data=>{
             console.log(data);
         });
         // show({"q":"jkhk","p":false,"bs":"","csor":"4","status":0,"g":[ { "q": "jkhkj", "t": "n", "st": { "q": "jkhkj", "new": 0 } }, { "q": "hkc 显示器 开机 不亮", "t": "n", "st": { "q": "hkc 显示器 开机 不亮", "new": 0 } }, { "q": "jkhkh;;k", "t": "n", "st": { "q": "jkhkh;;k", "new": 0 } }, { "q": "jkhkjh", "t": "n", "st": { "q": "jkhkjh", "new": 0 } }, { "q": "jkhkjhjkh", "t": "n", "st": { "q": "jkhkjhjkh", "new": 0 } }, { "q": "jkhkl", "t": "n", "st": { "q": "jkhkl", "new": 0 } }, { "q": "jkhklh", "t": "n", "st": { "q": "jkhklh", "new": 0 } }, { "q": "jphkt", "t": "n", "st": { "q": "jphkt", "new": 0 } }, { "q": "劲客和柯米克 哪个好", "t": "n", "st": { "q": "劲客和柯米克 哪个好", "new": 0 } }, { "q": "金葵花卡", "t": "n", "st": { "q": "金葵花卡", "new": 0 } } ],"s":["jkhkj","hkc 显示器 开机 不亮","jkhkh;;k","jkhkjh","jkhkjhjkh","jkhkl","jkhklh","jphkt","劲客和柯米克 哪个好","金葵花卡"]});   
     </script>
-    <script src="https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd=q&cb=show"></script>
+    <!-- <script src="https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd=q&cb=show"></script> -->
 </body>
 </html>
